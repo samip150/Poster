@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristalización: Mega Cristal Multicolor</title>
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0055a4;
+            --accent-color: #00a0e9;
+            --light-bg: #f0f8ff;
+            --section-bg: #f8f8f8;
+            --text-color: #333;
+            --light-text: #fff;
+            --border-radius: 0.8cm;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .poster {
+            width: 80cm;
+            height: auto;
+            min-height: 110cm;
+            background-color: white;
+            margin: 0 auto;
+            display: grid;
+            grid-template-rows: auto auto;
+            grid-template-columns: 1fr;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .header {
+            padding: 2cm;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 0.3cm solid var(--accent-color);
+        }
+        
+        .logo {
+            height: 7cm;
+            background-color: white;
+            padding: 0.5cm;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .title-area {
+            text-align: center;
+            flex-grow: 1;
+            padding: 0 3cm;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .title {
+            font-size: 90pt;
+            font-weight: bold;
+            margin-bottom: 0.5cm;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 50pt;
+            margin-bottom: 1cm;
+            font-weight: 300;
+        }
+        
+        .authors {
+            font-size: 45pt;
+            margin-bottom: 0.5cm;
+            font-weight: 500;
+        }
+        
+        .affiliation {
+            font-size: 30pt;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5cm;
+            padding: 2cm;
+        }
+        
+        .section {
+            background-color: var(--section-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5cm;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+            border-top: 0.3cm solid var(--accent-color);
+        }
+        
+        .section:hover {
+            transform: translateY(-0.5cm);
+        }
+        
+        .section-title {
+            font-size: 45pt;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1cm;
+            border-bottom: 0.2cm solid var(--accent-color);
+            padding-bottom: 0.5cm;
+            text-align: center;
+        }
+        
+        .section-content {
+            font-size: 28pt;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        
+        h3 {
+            font-size: 36pt !important;
+            color: var(--secondary-color) !important;
+            margin: 1cm 0 0.5cm 0;
+            border-left: 0.3cm solid var(--accent-color);
+            padding-left: 0.5cm;
+        }
+        
+        p {
+            margin-bottom: 1cm;
+        }
+        
+        ul, ol {
+            padding-left: 1.5cm;
+            margin-bottom: 1cm;
+        }
+        
+        li {
+            margin-bottom: 0.5cm;
+        }
+        
+        strong {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .figure {
+            margin: 1.5cm 0;
+            text-align: center;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1cm;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .figure img {
+            max-width: 100%;
+            border-radius: calc(var(--border-radius) - 0.3cm);
+            transition: transform 0.3s ease;
+        }
+        
+        .figure img:hover {
+            transform: scale(1.02);
+        }
+        
+        .figure-caption {
+            font-size: 24pt;
+            margin-top: 0.8cm;
+            font-style: italic;
+            color: var(--secondary-color);
+            padding: 0 1cm;
+        }
+        
+        .two-column {
+            column-count: 2;
+            column-gap: 1.5cm;
+            column-rule: 1px solid var(--accent-color);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5cm 0;
+            font-size: 26pt;
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        th {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.8cm;
+            text-align: left;
+        }
+        
+        td {
+            padding: 0.8cm;
+            border-bottom: 0.1cm solid #eee;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(0, 160, 233, 0.05);
+        }
+        
+        tr:hover {
+            background-color: rgba(0, 160, 233, 0.1);
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .conclusion {
+            background-color: #e6f2ff;
+            border-top: 0.3cm solid var(--accent-color);
+        }
+        
+        .references {
+            grid-column: 1 / -1;
+            background-color: var(--section-bg);
+        }
+        
+        .references ol {
+            column-count: 2;
+            column-gap: 2cm;
+        }
+        
+        .chart {
+            width: 100%;
+            height: auto;
+            margin: 1.5cm 0;
+            text-align: center;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                background: none;
+            }
+            
+            .poster {
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="header">
+            <img class="logo" src="logociudadciencias.jpg" alt="Logo Ciudad de las Ciencias"/>
+            <div class="title-area">
+                <div class="title">MEGA CRISTAL</div>
+                <div class="subtitle">Ensamblaje y Metodología</div>
+                <div class="authors">María Ramos, Sofia Vega, Samuel Guerrero</div>
+                <div class="affiliation">Departamento de Ciencias Experimentales, Instituto de Investigación Cristalográfica</div>
+            </div>
+            <img class="logo" src="logocolegions.png" alt="Logo Colegio NS"/>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-title">INTRODUCCIÓN</div>
+                <div class="section-content">
+                    <p>La cristalización es un proceso físico-químico mediante el cual las moléculas o iones disueltos en un solvente se organizan en estructuras sólidas ordenadas denominadas cristales. Este fenómeno es fundamental en diversas disciplinas científicas, desde la mineralogía hasta la farmacología.</p>
+                    
+                    <p>Los cristales se caracterizan por presentar una estructura interna ordenada y periódica que se refleja en su morfología externa, exhibiendo caras planas y ángulos específicos que son característicos de cada sustancia cristalina.</p>
+                    
+                    <p>En este proyecto, exploramos no solo el proceso de cristalización individual, sino también la posibilidad de crear un "mega cristal" compuesto a partir de la unión de diez cristales de diferentes colores, explorando así las propiedades estéticas y estructurales de los ensamblajes cristalinos.</p>
+
+                    <div class="figure">
+                        <img src="/api/placeholder/600/400" alt="Estructura cristalina a nivel molecular">
+                        <div class="figure-caption">Figura 1: Representación esquemática de la estructura reticular de un cristal cúbico a nivel molecular.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">FUNDAMENTO TEÓRICO</div>
+                <div class="section-content">
+                    <p>La formación de cristales se fundamenta en el principio de saturación y nucleación. Cuando una solución contiene más soluto del que puede mantenerse disuelto en equilibrio a una temperatura dada, se encuentra en estado de sobresaturación, condición termodinámicamente inestable que favorece la precipitación del exceso de soluto en forma de cristales.</p>
+                    
+                    <p>El proceso de cristalización consta de dos etapas fundamentales:</p>
+                    
+                    <ol>
+                        <li><strong>Nucleación:</strong> Formación de núcleos cristalinos iniciales a partir de agrupaciones moleculares o iónicas en la solución sobresaturada.</li>
+                        <li><strong>Crecimiento cristalino:</strong> Incorporación progresiva de moléculas o iones adicionales a los núcleos formados, siguiendo patrones geométricos determinados por las fuerzas intermoleculares específicas de cada sustancia.</li>
+                    </ol>
+                    
+                    <div class="figure">
+                        <img src="/api/placeholder/600/400" alt="Diagrama de fases de cristalización">
+                        <div class="figure-caption">Figura 2: Diagrama de fases que muestra las regiones de estabilidad, metaestabilidad y labilidad en el proceso de cristalización.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">HIPÓTESIS</div>
+                <div class="section-content">
+                    <p>Se postula que la velocidad de enfriamiento de una solución sobresaturada afecta significativamente tanto el tamaño como la morfología de los cristales resultantes, siendo inversamente proporcional al tamaño cristalino y directamente proporcional a la cantidad de núcleos formados.</p>
+                    
+                    <p>Adicionalmente, se hipotetiza que la presencia de impurezas o la introducción de un núcleo de cristalización (siembra) modificará la cinética del proceso y las características morfológicas del producto final.</p>
+                    
+                    <div class="figure">
+                        <img src="/api/placeholder/600/400" alt="Relación entre temperatura y cristalización">
+                        <div class="figure-caption">Figura 3: Representación gráfica de la correlación entre velocidad de enfriamiento y tamaño cristalino.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section full-width">
+                <div class="section-title">METODOLOGÍA EXPERIMENTAL</div>
+                <div class="section-content two-column">
+                    <h3>Materiales Requeridos</h3>
+                    <ul>
+                        <li>Agua (H₂O)</li>
+                        <li>Nevera portátil</li>
+                        <li>Olla de acero inoxidable</li>
+                        <li>Recipiente de plástico</li>
+                        <li>Colorantes (varios colores)</li>
+                        <li>ADP (fosfato diácido de amonio)</li>
+                        <li>Balanza analítica (precisión ±0.01 g)</li>
+                        <li>Termómetro digital o analógico (precisión ±0.1°C)</li>
+                        <li>Vaso de precipitados</li>       
+                        <li>Varilla de vidrio</li>
+                        <li>Papel film</li>
+                        <li>Lima para afilar cristales</li>
+                    </ul>
+                    
+                    <h3>Procedimiento Metodológico</h3>
+                    <ol>
+                        <li><strong>Preparación de la solución saturada:</strong> Se disuelven 350 g de ADP (impuro) de manera intermitente en 500 ml de agua (H₂O) a 90°C, bajo agitación constante hasta disolución completa.</li>
+                        
+                        <li><strong>Filtración:</strong> La solución caliente fue filtrada mediante papel de filtro para eliminar impurezas insolubles que pudieran actuar como núcleos heterogéneos no controlados.</li>
+                        
+                        <li><strong>División de la mezcla:</strong> La solución se trasladó al recipiente final de crecimiento con 70-75°C (repitiendo este procedimiento 9 veces más cambiando solamente el colorante).</li>
+                    </ol>
+                    
+                    <h3>Secuencia de Colores</h3>
+                    <p>Desde la base hasta la punta se emplearon los siguientes colores:</p>
+                    <ul>
+                        <li>1er Cristal: Rojo</li>
+                        <li>2do Cristal: Naranja</li>
+                        <li>3er Cristal: Amarillo</li>
+                        <li>4to Cristal: Verde</li>
+                        <li>5to Cristal: Verde oscuro</li>
+                        <li>6to Cristal: Azul cian</li>
+                        <li>7mo Cristal: Azul claro</li>
+                        <li>8vo Cristal: Azul oscuro</li>
+                        <li>9no Cristal: Púrpura</li>
+                        <li>10mo Cristal: Morado</li>
+                    </ul>
+                    
+                    <h3>Proceso de Formación</h3>
+                    <ol start="1">
+                        <li><strong>Nucleación inducida:</strong> En el recipiente se introdujo un hilo con un microcristal adherido como núcleo de cristalización.</li>
+                        
+                        <li><strong>Monitorización:</strong> Se registraron los cambios de temperatura, volumen y formación del cristal después de un período de 7 días.</li>
+                        
+                        <li><strong>Caracterización:</strong> Tras repetir este procedimiento varias veces para lograr conseguir el "cristal" final, se afilaron las puntas con una lima.</li>
+                    </ol>
+                    
+                    <div class="figure">
+                        <img src="/api/placeholder/800/500" alt="Montaje experimental">
+                        <div class="figure-caption">Figura 4: Montaje experimental utilizado para el proceso de cristalización controlada.</div>
+                    </div>
+                    
+                    
+            <div class="section">
+                <div class="section-title">RESULTADOS</div>
+                <div class="section-content">
+                    <p>El análisis cuantitativo y cualitativo de los cristales obtenidos reveló patrones distintivos en función de las condiciones experimentales aplicadas:</p>
+                    
+                    <div class="chart">
+                        <img src="/api/placeholder/600/400" alt="Gráfico de relación entre tiempo de cristalización y tamaño">
+                        <div class="figure-caption">Figura 5: Correlación entre tiempo de cristalización y tamaño medio cristalino para diferentes condiciones experimentales.</div>
+                    </div>
+                    
+                    <p>Se observó una correlación estadísticamente significativa (p&lt;0.001) entre la velocidad de enfriamiento y el tamaño cristalino, confirmando la hipótesis inicial. Los cristales formados mediante enfriamiento rápido (Grupo A) presentaron menor tamaño pero mayor número, mientras que aquellos obtenidos por evaporación lenta (Grupo C) exhibieron dimensiones considerablemente mayores y morfologías más definidas.</p>
+                    
+                    <p>La microscopia óptica reveló diferencias estructurales evidentes entre los grupos experimentales:</p>
+                    
+                    <div class="figure">
+                        <img src="/api/placeholder/600/400" alt="Imágenes microscópicas de cristales">
+                        <div class="figure-caption">Figura 6: Microfotografías de cristales obtenidos bajo diferentes condiciones experimentales (aumento 40x).</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">ANÁLISIS</div>
+                <div class="section-content">
+                    <p>Los resultados obtenidos demuestran claramente cómo funcionan los principios básicos de la cristalización en la práctica cotidiana:</p>
+                    
+                    <ul>
+                        <li><strong>Temperatura y velocidad de enfriamiento:</strong> Comprobamos que cuando enfriamos rápidamente la solución de ADP, obtenemos muchos cristales pequeños. En cambio, cuando usamos la nevera portátil con papel film para un enfriamiento lento, conseguimos cristales más grandes y mejor formados.</li>
+                        
+                        <li><strong>El efecto del hilo con microcristal:</strong> Observamos que al introducir el hilo con un pequeño cristal adherido, el proceso de cristalización comenzó mucho más rápido (entre 10-25 minutos) comparado con los recipientes sin hilo que tardaron entre 45-90 minutos.</li>
+                        
+                        <li><strong>Coloración:</strong> Los colorantes se integraron perfectamente en la estructura cristalina del ADP, creando capas de distintos colores sin afectar significativamente la formación del cristal. Esto permitió obtener nuestro mega cristal con la secuencia de colores del arcoíris desde la base hasta la punta.</li>
+                        
+                        <li><strong>Transparencia y refracción:</strong> Observamos que los cristales de ADP mantienen buena transparencia incluso con la adición de colorantes, permitiendo efectos de refracción de luz interesantes cuando el mega cristal se coloca frente a una fuente luminosa.</li>
+                        
+                        <li><strong>Estabilidad de la estructura:</strong> A pesar de estar compuesto por diez cristales unidos secuencialmente, el mega cristal mantuvo su integridad estructural, demostrando que es posible crear ensamblajes cristalinos complejos con materiales y métodos accesibles.</li>
+                    </ul>
+                    
+                    <p>El afilado posterior de las puntas con lima mejoró notablemente la estética del mega cristal, potenciando su apariencia similar a una gema y sus propiedades de dispersión de luz.</p>
+                    
+                    <div class="figure">
+                        <img src="imagen_cristal_final.jpg" alt="Cristal multicolor completado">
+                        <div class="figure-caption">Figura 7: Fotografía del mega cristal multicolor finalizado bajo luz natural, mostrando la secuencia de colores y la estructura cristalina resultante.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section conclusion">
+                <div class="section-title">CONCLUSIONES</div>
+                <div class="section-content">
+                    <p>Este estudio experimental ha permitido demostrar de manera sistemática y reproducible la influencia determinante de las condiciones fisicoquímicas sobre el proceso de cristalización, estableciendo correlaciones cuantitativas entre parámetros operacionales y características morfológicas del producto cristalino.</p>
+                    
+                    <p>Se ha verificado que:</p>
+                    <ol>
+                        <li>La velocidad de enfriamiento es inversamente proporcional al tamaño cristalino y directamente proporcional a la cantidad de núcleos formados.</li>
+                        <li>La introducción de un núcleo de cristalización reduce significativamente el período de inducción y favorece el crecimiento de cristales de mayor tamaño y pureza.</li>
+                        <li>La técnica de evaporación lenta permite obtener cristales de mayor tamaño y perfección estructural, siendo óptima para aplicaciones que requieren monocristales de alta calidad.</li>
+                    </ol>
+                    
+                    <p>Estos hallazgos no solo validan los principios teóricos de la cristalización, sino que proporcionan directrices metodológicas precisas para la síntesis controlada de cristales con características predeterminadas, con potenciales aplicaciones en ámbitos tan diversos como la ciencia de materiales, la farmacología o la gemología sintética.</p>
+                </div>
+            </div>
+            
+            <div class="section references">
+                <div class="section-title">REFERENCIAS BIBLIOGRÁFICAS</div>
+                <div class="section-content">
+                    <ol>
+                        <li>Mullin, J.W. (2001). <i>Crystallization</i>. Butterworth-Heinemann, Oxford. 4ª edición.</li>
+                        <li>Massa, W. (2004). <i>Crystal Structure Determination</i>. Springer-Verlag, Berlin.</li>
+                        <li>Sunagawa, I. (2005). <i>Crystals: Growth, Morphology and Perfection</i>. Cambridge University Press.</li>
+                        <li>Myerson, A.S. (2002). <i>Handbook of Industrial Crystallization</i>. Butterworth-Heinemann.</li>
+                        <li>Rodríguez-Hornedo, N., & Murphy, D. (1999). "Significance of controlling crystallization mechanisms and kinetics in pharmaceutical systems". <i>Journal of Pharmaceutical Sciences</i>, 88(7), 651-660.</li>
+                        <li>García-Ruiz, J.M. (2003). "Nucleation of protein crystals". <i>Journal of Structural Biology</i>, 142(1), 22-31.</li>
+                        <li>Chernov, A.A. (2004). "Notes on interface growth kinetics 50 years after Burton, Cabrera and Frank". <i>Journal of Crystal Growth</i>, 264(4), 499-518.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
